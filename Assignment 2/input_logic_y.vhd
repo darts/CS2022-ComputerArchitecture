@@ -1,4 +1,4 @@
-ibrary IEEE;
+library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity input_logic_y is
@@ -10,9 +10,10 @@ entity input_logic_y is
 end input_logic_y;
 
 architecture Behavioral of input_logic_y is
+
 begin
-    out_B <= "0000000000000000" when sel="00" else
-    B when sel="01" else
-    (not B) when sel="10" else
-    "1111111111111111" when sel="11"  
+     out_B <= "0000000000000000" when sel="00" else
+     B when sel="01" else
+     (not B) when sel="10" else
+     "1111111111111111" when sel="11";
 end Behavioral;
