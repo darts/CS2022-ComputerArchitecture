@@ -26,8 +26,38 @@ architecture Behavioral of ripple_adder_testbench is
     signal overFlow : STD_LOGIC := '0';
     signal sum : STD_LOGIC_VECTOR (15 downto 0) := (others => '0');
     
-    constant wait_time : time := 20ns;
+    constant wait_time : time := 100ns;
 begin
-    uut:
+    uut: ripple_adder port map(
+        A => A,
+        B => B,
+        carryIn => carryIn,
+        carryOut => carryOut,
+        sum => sum
+    );
+    
+    stim_proc : process
+        begin
+            A <= x"0001";
+            B <= x"0001";
+            carryIn <= '0';
+            wait for wait_time;
+            
+            A <= x"0001";
+            B <= x"0001";
+            carryIn <= '1';
+            wait for wait_time;
+            
+            A <= x"0001";
+            B <= x"0000";
+            carryIn <= '1';
+            wait for wait_time;
+            
+            A <= x"F000";
+            B <= x"FFFF";
+            carryIn <= '0';
+            wait for wait_time;
+        
+        end process;
 
 end Behavioral;

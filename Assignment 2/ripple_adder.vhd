@@ -13,7 +13,7 @@ entity ripple_adder is
 end ripple_adder;
 
 architecture Behavioral of ripple_adder is
-constant gate_delay: Time := 5ns; 
+constant gate_delay: Time := 1ns; 
 
     component full_adder
         port ( 

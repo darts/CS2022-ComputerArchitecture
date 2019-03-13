@@ -13,7 +13,7 @@ end full_adder;
 
 architecture Behavioral of full_adder is
 signal s1,s2,s3 : STD_LOGIC;
-constant gate_delay: Time := 5ns; 
+constant gate_delay: Time := 1ns; 
 
 begin
     s1 <= (A xor B) after gate_delay;

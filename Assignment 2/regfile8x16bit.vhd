@@ -9,12 +9,14 @@ entity regfile8x16bit is
         bus_b : out STD_LOGIC_VECTOR (15 downto 0);
         data_in : in STD_LOGIC_VECTOR (15 downto 0);
         des_reg : in STD_LOGIC_VECTOR (2 downto 0);
-        write : in STD_LOGIC;
+        write_enable : in STD_LOGIC;
         clk : in STD_LOGIC
         );
 end regfile8x16bit;
 
 architecture Behavioral of regfile8x16bit is
+constant gate_delay: Time := 5ns; 
+
     --list components
     
     --register 16-bit
@@ -75,56 +77,56 @@ begin
     reg0: reg16 port map(
         inD => data_in,
         outQ => rdr_reg0,
-        loadEnable => ldrE_reg0,
+        loadEnable => wrr_reg0,
         clk => clk
         );
     --R1
     reg1: reg16 port map(
         inD => data_in,
         outQ => rdr_reg1,
-        loadEnable => ldrE_reg1,
+        loadEnable => wrr_reg1,
         clk => clk
         );
     --R2
     reg2: reg16 port map(
         inD => data_in,
         outQ => rdr_reg2,
-        loadEnable => ldrE_reg2,
+        loadEnable => wrr_reg2,
         clk => clk
         );
     --R3
     reg3: reg16 port map(
         inD => data_in,
         outQ => rdr_reg3,
-        loadEnable => ldrE_reg3,
+        loadEnable => wrr_reg3,
         clk => clk
         );
     --R4
     reg4: reg16 port map(
         inD => data_in,
         outQ => rdr_reg4,
-        loadEnable => ldrE_reg4,
+        loadEnable => wrr_reg4,
         clk => clk
         );
     --R5
     reg5: reg16 port map(
         inD => data_in,
         outQ => rdr_reg5,
-        loadEnable => ldrE_reg5,
+        loadEnable => wrr_reg5,
         clk => clk
         );
     --R6
     reg6: reg16 port map(
         inD => data_in,
         outQ => rdr_reg6,
-        loadEnable => ldrE_reg6,
+        loadEnable => wrr_reg6,
         clk => clk
         );
     --R7
     reg7: reg16 port map(
         inD => data_in,
         outQ => rdr_reg7,
-        loadEnable => ldrE_reg7,
+        loadEnable => wrr_reg7,
         clk => clk
         );
      
@@ -169,6 +171,12 @@ begin
         out7 => ldrE_reg7
         );
      
-
-
+    wrr_reg0 <= (ldrE_reg0 and write_enable) after gate_delay;
+    wrr_reg1 <= (ldrE_reg1 and write_enable) after gate_delay;
+    wrr_reg2 <= (ldrE_reg2 and write_enable) after gate_delay;
+    wrr_reg3 <= (ldrE_reg3 and write_enable) after gate_delay;
+    wrr_reg4 <= (ldrE_reg4 and write_enable) after gate_delay;
+    wrr_reg5 <= (ldrE_reg5 and write_enable) after gate_delay;
+    wrr_reg6 <= (ldrE_reg6 and write_enable) after gate_delay;
+    wrr_reg7 <= (ldrE_reg7 and write_enable) after gate_delay;
 end Behavioral;

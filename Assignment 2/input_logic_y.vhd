@@ -10,7 +10,7 @@ entity input_logic_y is
 end input_logic_y;
 
 architecture Behavioral of input_logic_y is
-constant gate_delay: Time := 5ns; 
+constant gate_delay: Time := 1ns; 
 
 begin
      out_B <= "0000000000000000" after gate_delay when sel="00" else

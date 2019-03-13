@@ -10,7 +10,7 @@ entity mux2_16bit is
 end mux2_16bit;
 
 architecture Behavioral of mux2_16bit is
-constant gate_delay: Time := 5ns;
+constant gate_delay: Time := 1ns;
 
 begin
    process (sel,in0,in1)

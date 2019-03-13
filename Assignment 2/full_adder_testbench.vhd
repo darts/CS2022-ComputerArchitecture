@@ -24,7 +24,7 @@ architecture Behavioral of full_adder_testbench is
     signal sum : STD_LOGIC := '0';
     signal carryOut : STD_LOGIC := '0';
     
-    constant wait_time : time := 20ns;
+    constant wait_time : time := 30ns;
 begin
     
     uut: full_adder port map (

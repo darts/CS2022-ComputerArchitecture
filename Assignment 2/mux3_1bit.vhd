@@ -12,7 +12,7 @@ entity mux3_1bit is
 end mux3_1bit;
 
 architecture Behavioral of mux3_1bit is
-constant gate_delay: Time := 5ns;
+constant gate_delay: Time := 1ns;
 
 begin
     process(sel, in0, in1, in2)
