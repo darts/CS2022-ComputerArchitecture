@@ -13,7 +13,8 @@ entity ripple_adder is
 end ripple_adder;
 
 architecture Behavioral of ripple_adder is
-    
+constant gate_delay: Time := 5ns; 
+
     component full_adder
         port ( 
             A : in STD_LOGIC;
@@ -141,6 +142,6 @@ begin
         sum => sum(15)
     );
 
-    overFlow <= carry(14) xor carry(15);
-    carryOut <= carry(15);
+    overFlow <= (carry(14) xor carry(15)) after gate_delay;
+    carryOut <= (carry(15)) after gate_delay;
 end Behavioral;

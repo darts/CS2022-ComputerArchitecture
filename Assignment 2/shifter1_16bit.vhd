@@ -114,7 +114,7 @@ begin
             in0 => inPut(13),
             in1 => inPut(12),
             in2 => inPut(11),
-            outPut => outPut(11)
+            outPut => outPut(12)
     );
     mux13: mux3_1bit port map(
             sel => sel,

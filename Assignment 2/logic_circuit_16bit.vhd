@@ -11,10 +11,11 @@ entity logic_circuit_16bit is
 end logic_circuit_16bit;
 
 architecture Behavioral of logic_circuit_16bit is
+constant gate_delay: Time := 5ns; 
 
 begin   
-    output <= (A and B) when sel="00" else
-    (A or B) when sel="01" else
-    (A xor B) when sel="10" else
-    (not A) when sel="11";
+    output <= (A and B) after gate_delay when sel="00" else
+    (A or B) after gate_delay when sel="01" else
+    (A xor B) after gate_delay when sel="10" else
+    (not A) after gate_delay when sel="11";
 end Behavioral;

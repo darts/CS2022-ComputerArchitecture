@@ -12,8 +12,13 @@ entity full_adder is
 end full_adder;
 
 architecture Behavioral of full_adder is
+signal s1,s2,s3 : STD_LOGIC;
+constant gate_delay: Time := 5ns; 
 
 begin
-    sum <= ((A xor B) xor carryIn);
-    carryOut <= ((carryIn and (A xor B)) or (A and B)); 
+    s1 <= (A xor B) after gate_delay;
+    sum <= (s1 xor carryIn) after gate_delay;
+    s2 <= (carryIn and s1) after gate_delay;
+    s3 <= (A and B) after gate_delay;
+    carryOut <= (s2 or s3) after gate_delay;
 end Behavioral;

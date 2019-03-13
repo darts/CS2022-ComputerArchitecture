@@ -10,10 +10,11 @@ entity input_logic_y is
 end input_logic_y;
 
 architecture Behavioral of input_logic_y is
+constant gate_delay: Time := 5ns; 
 
 begin
-     out_B <= "0000000000000000" when sel="00" else
-     B when sel="01" else
-     (not B) when sel="10" else
-     "1111111111111111" when sel="11";
+     out_B <= "0000000000000000" after gate_delay when sel="00" else
+     B after gate_delay when sel="01" else
+     (not B) after gate_delay when sel="10" else
+     "1111111111111111" after gate_delay when sel="11";
 end Behavioral;
