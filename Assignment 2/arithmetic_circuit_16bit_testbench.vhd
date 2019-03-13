@@ -42,7 +42,30 @@ begin
 
     stim_proc: process
     begin
+        A <= '1';
+        B <= '0';
+        carryIn <= '0';
+        wait for wait_time;
         
+        A <= '0';
+        B <= '0';
+        carryIn <= '0';
+        wait for wait_time; 
+        
+        A <= '0';
+        B <= '0';
+        carryIn <= '1';
+        wait for wait_time;   
+        
+        A <= '1';
+        B <= '1';
+        carryIn <= '0';
+        wait for wait_time;
+        
+        A <= '1';
+        B <= '1';
+        carryIn <= '1';
+        wait for wait_time;  
     end process;
 
 end Behavioral;
