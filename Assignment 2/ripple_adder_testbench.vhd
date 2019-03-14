@@ -33,7 +33,8 @@ begin
         B => B,
         carryIn => carryIn,
         carryOut => carryOut,
-        sum => sum
+        sum => sum,
+        overFlow => overFlow
     );
     
     stim_proc : process
@@ -58,6 +59,11 @@ begin
             carryIn <= '0';
             wait for wait_time;
         
+            A <= x"8000";
+            B <= x"FFFF";
+            carryIn <= '0';
+            wait for wait_time;
+            
         end process;
 
 end Behavioral;

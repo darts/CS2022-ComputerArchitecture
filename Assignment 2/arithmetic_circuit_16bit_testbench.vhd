@@ -28,7 +28,7 @@ architecture Behavioral of arithmetic_circuit_16bit_testbench is
     signal carryOut : STD_LOGIC := '0';
     signal overFlow : STD_LOGIC := '0';
 
-    constant wait_time : time := 30ns;
+    constant wait_time : time := 50ns;
 begin
     uut: arithmetic_circuit_16bit port map(
         A => A,
@@ -42,30 +42,56 @@ begin
 
     stim_proc: process
     begin
-        A <= '1';
-        B <= '0';
+        --out = A
+        A <= x"0001";
+        B <= x"0005";
         carryIn <= '0';
+        mode_select <= "00";
         wait for wait_time;
         
-        A <= '0';
-        B <= '0';
-        carryIn <= '0';
-        wait for wait_time; 
-        
-        A <= '0';
-        B <= '0';
+        --out = A + 1
+        A <= x"0001";
+        B <= x"0005";
         carryIn <= '1';
-        wait for wait_time;   
-        
-        A <= '1';
-        B <= '1';
+        mode_select <= "00";
+        wait for wait_time;
+       
+        --out = A + B 
+        A <= x"0001";
+        B <= x"0005";
         carryIn <= '0';
+        mode_select <= "01";
         wait for wait_time;
         
-        A <= '1';
-        B <= '1';
+        --out = A + B + 1
+        A <= x"0001";
+        B <= x"0005";
         carryIn <= '1';
-        wait for wait_time;  
+        mode_select <= "01";
+        wait for wait_time;
+        
+        --out = A + !B
+        A <= x"0001";
+        B <= x"0005";
+        carryIn <= '0';
+        mode_select <= "10";
+        wait for wait_time;
+        
+        --out = A + !B + 1
+        A <= x"0001";
+        B <= x"0005";
+        carryIn <= '1';
+        mode_select <= "10";
+        wait for wait_time;
+        
+        --out = A - 1
+        A <= x"0001";
+        B <= x"0005";
+        carryIn <= '0';
+        mode_select <= "11";
+        wait for wait_time;
+        
+        
     end process;
 
 end Behavioral;

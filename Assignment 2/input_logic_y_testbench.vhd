@@ -5,8 +5,8 @@ entity input_logic_y_testbench is
 end input_logic_y_testbench;
 
 architecture Behavioral of input_logic_y_testbench is
-    component input_logic_y is
-    Port (
+    component input_logic_y
+    port (
         B : in STD_LOGIC_VECTOR (15 downto 0);
         sel : in STD_LOGIC_VECTOR (1 downto 0);
         out_B : out STD_LOGIC_VECTOR (15 downto 0)
