@@ -102,7 +102,5 @@ begin
     
     a_out <= busA;
     data_out <= busB_FU_Side;
-    
-        
 
 end Behavioral;
