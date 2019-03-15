@@ -90,7 +90,27 @@ begin
         carryIn <= '0';
         mode_select <= "11";
         wait for wait_time;
+       
+        --out = A 
+        A <= x"0001";
+        B <= x"0005";
+        carryIn <= '1';
+        mode_select <= "11";
+        wait for wait_time;
         
+        --overflow check
+        A <= x"7FFF";
+        B <= x"0001";
+        carryIn <= '0';
+        mode_select <= "10";
+        wait for wait_time;
+        
+        --carry check
+        A <= x"FFFF";
+        B <= x"0001";
+        carryIn <= '0';
+        mode_select <= "10";
+        wait for wait_time;
         
     end process;
 

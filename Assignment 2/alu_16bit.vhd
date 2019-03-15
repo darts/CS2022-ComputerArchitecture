@@ -37,7 +37,7 @@ constant gate_delay: Time := 5ns;
 
     component mux2_16bit
     port (
-        sel : in  STD_LOGIC_VECTOR (0 downto 0);
+        sel : in  STD_LOGIC_VECTOR (3 downto 3);
         in0 : in  STD_LOGIC_VECTOR (15 downto 0);
         in1 : in  STD_LOGIC_VECTOR (15 downto 0);
         z : out STD_LOGIC_VECTOR (15 downto 0)
@@ -65,7 +65,7 @@ begin
         );
 
         outSelect : mux2_16bit port map(
-            sel => mode_select(3),
+            sel => mode_select(3 downto 3),
             in0 => arithOut,
             in1 => logicOut,
             z => outPut

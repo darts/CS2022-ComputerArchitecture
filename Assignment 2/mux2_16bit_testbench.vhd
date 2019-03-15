@@ -1,11 +1,11 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity mux_2_16bit_TestBench is
-end mux_2_16bit_TestBench;
+entity mux2_16bit_TestBench is
+end mux2_16bit_TestBench;
  
  
-Architecture behavior of mux_2_16bit_TestBench is 
+Architecture behavior of mux2_16bit_TestBench is 
     component mux2_16bit
     port(
          sel : in  STD_LOGIC_VECTOR (0 downto 0);

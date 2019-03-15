@@ -26,7 +26,7 @@ architecture Behavioral of FU_16bit is
     );
     end component;
 
-    component shifer1_16bit
+    component shifter1_16bit
     port (
         inPut : in STD_LOGIC_VECTOR (15 downto 0);
         outPut : out STD_LOGIC_VECTOR (15 downto 0);
@@ -68,21 +68,21 @@ begin
         inPut => B,
         outPut => shiftOut,
         sel => mode_select(3 downto 2)
-    )
+    );
 
     outSelect : mux2_16bit port map(
-        sel => mode_select(4),
+        sel => mode_select(4 downto 4),
         in0 => aluOut,
         in1 => shiftOut,
         z => outPut
-    )
+    );
 
     zero : zero_detect_16bit port map(
         inPut => aluOut,
         outPut => Z
-    )
+    );
 
-    N <= '1' after gate_delay when aluOut(15)='0' else
+    N <= '1' after gate_delay when aluOut(15)='1' else
         '0' after gate_delay;
 
 end Behavioral;
