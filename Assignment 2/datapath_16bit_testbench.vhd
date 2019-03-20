@@ -353,7 +353,7 @@ begin
         MD_select <= "0";
         wait for clk_period;
         
-        --reg1 = sr(reg4)
+        --reg1 = sl(reg4)
         src_a <= "011";
         src_b <= "100";
         MB_select <= "0";

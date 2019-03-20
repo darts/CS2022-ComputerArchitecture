@@ -123,7 +123,7 @@ begin
         mode_select <= "01100";
         wait for wait_time;
         
-        -- A NOT B
+        -- NOT(A)
         mode_select <= "01110";
         wait for wait_time;
         
